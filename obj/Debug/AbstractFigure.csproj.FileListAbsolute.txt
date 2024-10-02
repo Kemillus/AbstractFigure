@@ -1,0 +1,9 @@
+D:\Veronika\AbstractFigure\AbstractFigure\bin\Debug\AbstractFigure.exe.config
+D:\Veronika\AbstractFigure\AbstractFigure\bin\Debug\AbstractFigure.exe
+D:\Veronika\AbstractFigure\AbstractFigure\bin\Debug\AbstractFigure.pdb
+D:\Veronika\AbstractFigure\AbstractFigure\obj\Debug\AbstractFigure.csproj.AssemblyReference.cache
+D:\Veronika\AbstractFigure\AbstractFigure\obj\Debug\AbstractFigure.Properties.Resources.resources
+D:\Veronika\AbstractFigure\AbstractFigure\obj\Debug\AbstractFigure.csproj.GenerateResource.cache
+D:\Veronika\AbstractFigure\AbstractFigure\obj\Debug\AbstractFigure.csproj.CoreCompileInputs.cache
+D:\Veronika\AbstractFigure\AbstractFigure\obj\Debug\AbstractFigure.exe
+D:\Veronika\AbstractFigure\AbstractFigure\obj\Debug\AbstractFigure.pdb
