@@ -34,19 +34,31 @@ namespace AbstractFigure
             {
                 if (i < 2)
                 {
-                    PaintRectangle(g, startPoint, radius, color, angle);
+                    PaintRectangle(g, startPoint, radius, color, angle, false);
                     angle += 44;
                 }
 
                 else if (i == 2)
                 {
-                    PaintRectangle(g, startPoint, radius, color, 45);
-                    PaintRectangle(g, startPoint, radius-50, color, 45);
+                    PaintRectangle(g, startPoint, radius, color, 45, true);
+
+                    PaintRectangle(g, startPoint, radius - (radius / 5), color, 45, false);
                 }
 
                 else
-                    PaintRectangle(g, startPoint, radius, color, 0);
+                    PaintRectangle(g, startPoint, radius, color, 0, true);
             }
+        }
+
+        private void PaintLine(Graphics g, PointF startPoint, float radius, Color color)
+        {
+            Pen pen = new Pen(color, 2);
+            PointF p1 = new PointF(startPoint.X - startPoint.X/2, startPoint.Y);
+            PointF p2 = new PointF(startPoint.X + startPoint.X/2, startPoint.Y);
+            g.DrawLine(pen, p1, p2);
+            p1 = new PointF(startPoint.X, startPoint.Y - startPoint.Y / 2);
+            p2 = new PointF(startPoint.X, startPoint.Y + startPoint.Y / 2);
+            g.DrawLine(pen, p1, p2);
         }
 
         private void PaintCicle(Graphics g, PointF startPoint, float radius, Color color)
@@ -55,7 +67,7 @@ namespace AbstractFigure
             g.DrawEllipse(new Pen(Color.White, 6), startPoint.X - radius, startPoint.Y - radius, radius * 2, radius * 2);
         }
 
-        private void PaintRectangle(Graphics g, PointF centerPoint, float radius, Color color, int angle)
+        private void PaintRectangle(Graphics g, PointF centerPoint, float radius, Color color, int angle, bool line)
         {
             Matrix matrix = new Matrix();
             matrix.RotateAt(angle, centerPoint);
@@ -66,7 +78,13 @@ namespace AbstractFigure
             float rectangleY = centerPoint.Y - (rectangleHeight / 2);
 
             g.FillRectangle(new SolidBrush(Color.Violet), rectangleX, rectangleY, rectangleWidth, rectangleHeight);
-            g.DrawRectangle(new Pen(Color.White), rectangleX, rectangleY, rectangleWidth, rectangleHeight);
+
+            if (line)
+            {
+                PaintLine(g, centerPoint, radius, color);
+            }
+
+            g.DrawRectangle(new Pen(Color.Black, 2), rectangleX, rectangleY, rectangleWidth, rectangleHeight);
             g.ResetTransform();
         }
     }
