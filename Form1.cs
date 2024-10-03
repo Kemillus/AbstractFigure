@@ -50,15 +50,23 @@ namespace AbstractFigure
             }
         }
 
-        private void PaintLine(Graphics g, PointF startPoint, float radius, Color color)
+        private void PaintLine(Graphics g, PointF startPoint, float radius, Color color, bool isDiagonal)
         {
-            Pen pen = new Pen(color, 2);
-            PointF p1 = new PointF(startPoint.X - startPoint.X/2, startPoint.Y);
-            PointF p2 = new PointF(startPoint.X + startPoint.X/2, startPoint.Y);
-            g.DrawLine(pen, p1, p2);
-            p1 = new PointF(startPoint.X, startPoint.Y - startPoint.Y / 2);
-            p2 = new PointF(startPoint.X, startPoint.Y + startPoint.Y / 2);
-            g.DrawLine(pen, p1, p2);
+            if (!isDiagonal)
+            {
+                Pen pen = new Pen(color, 2);
+                PointF p1 = new PointF(startPoint.X - startPoint.X / 2, startPoint.Y);
+                PointF p2 = new PointF(startPoint.X + startPoint.X / 2, startPoint.Y);
+                g.DrawLine(pen, p1, p2);
+                p1 = new PointF(startPoint.X, startPoint.Y - startPoint.Y / 2);
+                p2 = new PointF(startPoint.X, startPoint.Y + startPoint.Y / 2);
+                g.DrawLine(pen, p1, p2);
+            }
+
+            else
+            {
+                
+            }
         }
 
         private void PaintCicle(Graphics g, PointF startPoint, float radius, Color color)
@@ -81,7 +89,7 @@ namespace AbstractFigure
 
             if (line)
             {
-                PaintLine(g, centerPoint, radius, color);
+                PaintLine(g, centerPoint, radius, color, false);
             }
 
             g.DrawRectangle(new Pen(Color.Black, 2), rectangleX, rectangleY, rectangleWidth, rectangleHeight);
